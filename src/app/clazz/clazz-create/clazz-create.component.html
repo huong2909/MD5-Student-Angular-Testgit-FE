@@ -1,0 +1,16 @@
+<h1>Tạo lớp</h1>
+<form [formGroup]="clazzForm" (ngSubmit)="submit()">
+  <table>
+    <tr>
+      <td>Tên</td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button>Tạo mới</button>
+      </td>
+    </tr>
+  </table>
+</form>
+

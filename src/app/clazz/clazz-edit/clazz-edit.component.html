@@ -1,0 +1,17 @@
+<h1>Tạo danh bài viết</h1>
+<form [formGroup]="clazzForm" (ngSubmit)="update(id)">
+  <table>
+    <tr>
+      <td>Tên</td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button>Cập nhật</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+
