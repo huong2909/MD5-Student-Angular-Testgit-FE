@@ -7,10 +7,14 @@ import {StudentEditComponent} from './student/student-edit/student-edit.componen
 
 
 const routes: Routes = [
-  {path: '', component: StudentListComponent},
-  {path: 'create', component: StudentCreateComponent},
-  {path: 'delete/:id', component: StudentDeleteComponent},
-  {path: 'edit/:id', component: StudentEditComponent},
+  {
+    path: 'student',
+    loadChildren: () => import('./student/student/student.module').then(module => module.StudentModule)
+  },
+  {
+    path: 'clazz',
+    loadChildren: () => import('./clazz/clazz/clazz.module').then(module => module.ClazzModule)
+  }
 ];
 
 @NgModule({

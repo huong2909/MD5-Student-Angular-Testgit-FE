@@ -13,4 +13,16 @@ export class ClazzService {
   getAll(): Observable<Clazz[]> {
     return this.httpClient.get<Clazz[]>(API_URL);
   }
+  save(clazz): Observable<Clazz> {
+    return this.httpClient.post<Clazz>(API_URL, clazz);
+  }
+  getById(id): Observable<Clazz> {
+    return  this.httpClient.get<Clazz>(API_URL + `/${id}`);
+  }
+  delete(id: string): Observable<Clazz> {
+    return this.httpClient.delete<Clazz>(API_URL + `/${id}`);
+  }
+  update(id: number, clazz: Clazz): Observable<Clazz> {
+    return this.httpClient.put<Clazz>(`${API_URL}/${id}`, clazz);
+  }
 }

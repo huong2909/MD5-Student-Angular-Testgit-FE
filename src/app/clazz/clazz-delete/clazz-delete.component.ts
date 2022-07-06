@@ -29,7 +29,7 @@ export class ClazzDeleteComponent implements OnInit {
       });
     });
   }
-  delete(id: number) {
+  delete(id: string) {
     this.clazzService.delete(id).subscribe(() => {
       // this.router.navigate(['/clazz']);
       alert('Xoá thành công');
@@ -37,5 +37,4 @@ export class ClazzDeleteComponent implements OnInit {
       console.log(e);
     });
   }
-
 }
