@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 import {Clazz} from '../../model/Clazz';
 import {StudentService} from '../../service/student.service';
@@ -14,13 +14,19 @@ import {ClazzService} from '../../service/clazz.service';
 })
 export class StudentEditComponent implements OnInit {
 
-  studentForm: FormGroup;
+  studentForm: FormGroup = new FormGroup({
+    name: new FormControl(),
+    score: new FormControl(),
+    age: new FormControl(),
+    clazzId: new FormControl(),
+  });
   id: number;
   obj: any;
   listClazz: Clazz[] = [];
   constructor(private studentService: StudentService,
               private activatedRoute: ActivatedRoute,
-              private clazzService: ClazzService
+              private clazzService: ClazzService,
+              private router: Router
               // ActivatedRoute lấy dữ liệu trên đường dẫn
               ) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
@@ -55,6 +61,7 @@ export class StudentEditComponent implements OnInit {
       }
     };
     this.studentService.update(id, this.obj).subscribe(() => {
+      this.router.navigate(['/student']);
       alert('Cập nhật thành công');
     }, e => {
       console.log(e);

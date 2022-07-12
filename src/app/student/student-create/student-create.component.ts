@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {Clazz} from '../../model/Clazz';
 import {StudentService} from '../../service/student.service';
 import {ClazzService} from '../../service/clazz.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-student-create',
@@ -19,7 +20,8 @@ export class StudentCreateComponent implements OnInit {
   obj: any;
   listClazz: Clazz[] = [];
   constructor(private studentService: StudentService,
-              private clazzService: ClazzService) { }
+              private clazzService: ClazzService,
+              private router: Router) { }
 
   ngOnInit() {
     this.clazzService.getAll().subscribe((data) => {
@@ -36,6 +38,7 @@ export class StudentCreateComponent implements OnInit {
       }
     };
     this.studentService.save(this.obj).subscribe(() => {
+      this.router.navigate(['/student']);
       alert('Thành công');
     }, error => {
       alert('Lỗi');
