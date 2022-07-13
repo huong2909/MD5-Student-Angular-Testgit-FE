@@ -15,7 +15,7 @@
     </tr>
     <tr>
       <td>Lớp</td>
-      <td><select formControlName = "clazzId">
+      <td><select formControlName = "clazz">
         <option *ngFor="let clazz of listClazz" [value]="clazz.id">
           {{clazz.name}}
         </option>
@@ -26,6 +26,7 @@
       <td></td>
       <td>
         <button>Tạo mới</button>
+        <button (click)="goBack()">Trở về</button>
       </td>
     </tr>
   </table>
